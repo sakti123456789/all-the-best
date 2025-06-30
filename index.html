@@ -7,9 +7,8 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <audio id="bgMusic" loop autoplay>
+  <audio id="bgMusic" loop>
     <source src="background.mp3" type="audio/mpeg" />
-    Your browser does not support the audio element.
   </audio>
 
   <audio id="wishSound">
@@ -17,7 +16,7 @@
   </audio>
 
   <div class="container">
-    <h1>Enter Your Friend's Name</h1>
+    <h1>Wish Your Friend 🎓</h1>
     <input type="text" id="nameInput" placeholder="Type a name..." />
     <button onclick="showMessage()">Wish</button>
     <div id="message" class="hidden"></div>
@@ -25,33 +24,5 @@
   </div>
 
   <script>
-    function showMessage() {
-      const name = document.getElementById("nameInput").value.trim();
-      const messageBox = document.getElementById("message");
-      const wishSound = document.getElementById("wishSound");
-      const emojis = document.getElementById("emojis");
-
-      if (name) {
-        messageBox.innerHTML = `🎉 All the Best, <strong>${name}</strong>! 🍀`;
-        messageBox.classList.remove("hidden");
-        messageBox.classList.add("animate");
-
-        // Play sound effect
-        wishSound.currentTime = 0;
-        wishSound.play();
-
-        // Show emoji animation
-        emojis.innerHTML = "";
-        for (let i = 0; i < 20; i++) {
-          const emoji = document.createElement("div");
-          emoji.className = "emoji";
-          emoji.style.left = `${Math.random() * 100}%`;
-          emoji.style.animationDelay = `${Math.random() * 2}s`;
-          emoji.innerText = Math.random() > 0.5 ? "🎉" : "✨";
-          emojis.appendChild(emoji);
-        }
-      }
-    }
-  </script>
-</body>
-</html>
+    document.body.addEventListener('click', () => {
+      document.getElementById("bgMusic").play();
