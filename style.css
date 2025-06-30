@@ -1,89 +1,107 @@
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to right, #00c6ff, #0072ff);
-  color: #fff;
-  text-align: center;
-  padding-top: 100px;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(to bottom right, #fefcea, #f1da36);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   overflow: hidden;
+  text-align: center;
 }
 
 .container {
-  background-color: rgba(0, 0, 0, 0.3);
-  padding: 30px;
+  width: 90%;
+  max-width: 400px;
+  background: white;
+  padding: 20px;
   border-radius: 15px;
-  display: inline-block;
-  position: relative;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
 }
 
 input {
-  padding: 10px;
-  font-size: 16px;
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  margin-bottom: 15px;
   border-radius: 8px;
-  border: none;
-  width: 250px;
+  border: 1px solid #ccc;
 }
 
 button {
-  padding: 10px 20px;
-  font-size: 16px;
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
   border: none;
   border-radius: 8px;
-  background-color: #fff;
-  color: #0072ff;
-  margin-left: 10px;
+  background-color: #00b894;
+  color: white;
   cursor: pointer;
-  font-weight: bold;
-  transition: background 0.3s;
+  transition: background 0.3s ease;
 }
 
 button:hover {
-  background-color: #e0e0e0;
+  background-color: #019875;
 }
 
 #message {
-  margin-top: 30px;
-  font-size: 24px;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1s ease, transform 1s ease;
-}
-
-#message.animate {
-  opacity: 1;
-  transform: translateY(0);
+  font-size: 1.4rem;
+  margin-top: 20px;
+  color: #2d3436;
 }
 
 .hidden {
-  display: block;
-  opacity: 0;
+  display: none;
+}
+
+.animate {
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
 .emoji-container {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
   overflow: hidden;
+  z-index: 999;
 }
 
 .emoji {
   position: absolute;
-  font-size: 30px;
-  animation: float 3s ease-in-out infinite;
+  font-size: 1.5rem;
+  animation: floatDown 3s ease-in infinite;
 }
 
-@keyframes float {
-  0% {
-    transform: translateY(100vh) rotate(0deg);
-    opacity: 0;
+@keyframes floatDown {
+  0% { top: -10%; opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
   }
-  50% {
-    opacity: 1;
+
+  input, button {
+    font-size: 1rem;
+    padding: 10px;
   }
-  100% {
-    transform: translateY(-20vh) rotate(360deg);
-    opacity: 0;
+
+  #message {
+    font-size: 1.2rem;
   }
 }
